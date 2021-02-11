@@ -144,6 +144,7 @@ runs:
       run: |
         echo "Create container"
         docker create --name "${{ inputs.name }}" -t \
+          - e CRYPTOGRAPHY_DONT_BUILD_RUST=1 \
           --workdir /data \
           ${{ steps.options.outputs.docker }} \
           "wheels-builder" \
