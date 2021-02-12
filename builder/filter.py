@@ -10,10 +10,10 @@ def filter_requirements(requirement: Path, arch: str) -> None:
     """Filter requirements."""
     requirements = parse_requirements(requirement)
 
-    for requitement in FILTERED:
-        if arch in FILTERED[requitement]:
+    for req_filter in FILTERED:
+        if arch in FILTERED[req_filter]:
             for req in requirements:
-                if req.startswith(requitement):
+                if req.startswith(req_filter):
                     requirements.remove(req)
 
     write_requirement(requirement, requirements)
